@@ -15,11 +15,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
 .nav-links{display:flex;}
 .nav-links a{color:rgba(232,208,138,0.7);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;padding:0 1rem;height:58px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s;}
 .nav-links a:hover,.nav-links a.active{color:#E8D08A;border-bottom-color:#C9A84C;}
+.nav-toggle{display:none;}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;margin-left:auto;}
+.nav-burger span{display:block;height:2px;width:24px;background:#E8D08A;transition:transform 0.3s,opacity 0.3s;}
+.nav-toggle:checked ~ .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle:checked ~ .nav-burger span:nth-child(2){opacity:0;}
+.nav-toggle:checked ~ .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-burger{display:flex;}
+  .nav-logo{font-size:24px;}
+  .nav-links{position:fixed;top:58px;left:0;right:0;flex-direction:column;background:rgba(26,10,10,0.98);border-bottom:1px solid rgba(201,168,76,0.3);max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+  .nav-toggle:checked ~ .nav-links{max-height:85vh;}
+  .nav-links a{height:auto;width:100%;padding:0.95rem 1.5rem;font-size:12px;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .nav-links a.active{color:#E8D08A;border-bottom-color:rgba(201,168,76,0.12);}
+}
 
 .page-header{background:linear-gradient(160deg,#1A0A0A,#3B1010);text-align:center;padding:7rem 2rem 4rem;}
 .page-header .label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.4em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.8rem;display:block;}
 .page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:300;color:#F5EDD8;}
-.page-header p{color:rgba(232,208,138,0.55);font-size:23px;letter-spacing:0.1em;margin-top:0.8rem;line-height:1.8;max-width:600px;margin-left:auto;margin-right:auto;}
+.page-header p{color:rgba(232,208,138,0.55);font-size:clamp(0.92rem,2.2vw,1.05rem);letter-spacing:0.1em;margin-top:0.8rem;line-height:1.8;max-width:600px;margin-left:auto;margin-right:auto;}
 
 .programme{max-width:1320px;margin:0 auto;padding:4rem 2rem 6rem;}
 
@@ -47,11 +62,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
 .prog-subtitle{display:block;font-family:'Raleway',sans-serif;font-size:0.75rem;letter-spacing:0.1em;color:#E8D08A;opacity:0.7;margin-top:0.2rem;font-style:italic;}
 .prog-duration{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:#C9A84C;text-transform:uppercase;flex-shrink:0;}
 .prog-tags{display:flex;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;}
-.prog-tag{font-size:21px;letter-spacing:0.1em;text-transform:uppercase;color:#D4B896;border:1px solid rgba(201,168,76,0.3);padding:3px 10px;}
-.prog-desc{font-size:24px;line-height:1.9;color:#D4B896;}
+.prog-tag{font-size:clamp(0.88rem,2vw,0.98rem);letter-spacing:0.1em;text-transform:uppercase;color:#D4B896;border:1px solid rgba(201,168,76,0.3);padding:3px 10px;}
+.prog-desc{font-size:clamp(0.95rem,2.3vw,1.08rem);line-height:1.9;color:#D4B896;}
 
 /* Per-row photo adjustments */
-.prog-row[data-row="0"] .prog-photo img{ object-position:calc(50% - 36px) center; }
+.prog-row[data-row="0"] .prog-photo img{ object-position:center center; }
 .prog-row[data-row="2"] .prog-photo img{ object-position:calc(50% + 12px) center; }
 .prog-row[data-row="5"] .prog-photo img{ object-position:calc(50% - 36px) center; }
 .prog-row[data-row="6"] .prog-photo img{
@@ -59,18 +74,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
   transform:scale(1.15) translateY(-5px);transform-origin:center top;
 }
 
-.prog-note{text-align:center;padding:2rem;font-size:21px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;font-style:italic;border-top:1px solid rgba(201,168,76,0.3);}
+.prog-note{text-align:center;padding:2rem;font-size:clamp(0.88rem,2vw,0.98rem);color:rgba(201,168,76,0.5);letter-spacing:0.1em;font-style:italic;border-top:1px solid rgba(201,168,76,0.3);}
 
 footer{background:#1A0A0A;text-align:center;padding:2.5rem 1rem;border-top:1px solid rgba(201,168,76,0.3);}
 .footer-ornament{color:#C9A84C;font-size:1rem;opacity:0.35;margin-bottom:0.6rem;}
-footer p{font-size:21px;letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-transform:uppercase;}
+footer p{font-size:clamp(0.88rem,2vw,0.98rem);letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-transform:uppercase;}
 
 @media(max-width:780px){
   .prog-row,.prog-row:nth-child(even){grid-template-columns:1fr;min-height:auto;}
+  .prog-photo{order:1!important;}
+  .prog-body{order:2!important;border-left:none!important;border-right:none!important;}
   .prog-photo{height:300px;}
+  .prog-row[data-row="1"] .prog-photo,.prog-row[data-row="2"] .prog-photo,.prog-row[data-row="3"] .prog-photo,.prog-row[data-row="4"] .prog-photo,.prog-row[data-row="5"] .prog-photo,.prog-row[data-row="6"] .prog-photo{height:auto;}
+  .prog-row[data-row="1"] .prog-photo img,.prog-row[data-row="2"] .prog-photo img,.prog-row[data-row="3"] .prog-photo img,.prog-row[data-row="4"] .prog-photo img,.prog-row[data-row="5"] .prog-photo img,.prog-row[data-row="6"] .prog-photo img{object-fit:contain;object-position:center top;height:auto;}
   .prog-body{border-left:none!important;border-right:none!important;border-top:1px solid rgba(201,168,76,0.3);}
   nav{padding:0 1rem;}
   .nav-links a{padding:0 0.5rem;font-size:9px;}
+}
+
+@media(max-width:680px){
+  section,.section,.hero-section{padding-top:2.5rem!important;padding-bottom:2.5rem!important;}
+  .page-header,.hero{min-height:clamp(340px,55vh,500px)!important;}
+  h1{font-size:clamp(1.8rem,7vw,2.8rem)!important;}
+  h2{font-size:clamp(1.4rem,5.5vw,2.2rem)!important;}
 }
 </style>
 </head>
@@ -78,6 +104,8 @@ footer p{font-size:21px;letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-
 
 <nav>
   <a href="index.html" class="nav-logo">Diya's Arangetram</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="diya.html">Diya</a>

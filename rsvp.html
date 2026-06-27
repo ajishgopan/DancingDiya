@@ -24,6 +24,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
 @media(max-width:900px){
   nav{padding:0 1.25rem;}
   .nav-burger{display:flex;}
+  .nav-logo{font-size:24px;}
   .nav-links{position:fixed;top:58px;left:0;right:0;flex-direction:column;background:rgba(26,10,10,0.98);border-bottom:1px solid rgba(201,168,76,0.3);max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
   .nav-toggle:checked ~ .nav-links{max-height:85vh;}
   .nav-links a{height:auto;width:100%;padding:0.95rem 1.5rem;font-size:12px;border-bottom:1px solid rgba(201,168,76,0.12);}
@@ -31,10 +32,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
 }
 
 /* ── HERO ── */
-.page-header{position:relative;margin-top:58px;min-height:clamp(440px,72vh,760px);overflow:hidden;display:flex;align-items:flex-end;justify-content:center;text-align:center;background:#000;}
-.page-header .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 32%;}
-.page-header .hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,5,5,0.10)0%,rgba(26,5,5,0.10)42%,rgba(26,5,5,0.55)72%,rgba(26,5,5,0.94)100%);}
-.page-header .hero-content{position:relative;z-index:2;padding:0 2rem 3.4rem;max-width:760px;}
+.page-header{margin-top:58px;background:#000;text-align:center;}
+.page-header .hero-photo{width:100%;display:block;object-fit:contain;max-height:90vh;}
+.page-header .hero-veil{display:none;}
+.page-header .hero-content{padding:2.5rem 2rem 2rem;background:#1A0505;}
 .label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.4em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.8rem;display:block;}
 .page-header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:300;color:#F5EDD8;margin-bottom:0.5rem;}
 .page-header p{color:rgba(232,208,138,0.55);font-size:clamp(0.95rem,2.5vw,1.1rem);line-height:1.8;margin-top:0.8rem;max-width:560px;margin-left:auto;margin-right:auto;}
@@ -80,11 +81,24 @@ footer{background:#1A0A0A;text-align:center;padding:2.5rem 1rem;border-top:1px s
 footer p{font-size:clamp(0.7rem,1.8vw,0.8rem);letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-transform:uppercase;}
 
 @media(max-width:680px){
-  .page-header{min-height:clamp(380px,62vh,560px);}
-  .page-header .hero-photo{object-position:46% 30%;}
+  .page-header .hero-photo{max-height:75vw;}
   .info-band{gap:1.5rem;}
   nav{padding:0 1rem;}
   .form-wrap iframe{height:1100px;}
+}
+
+/* ── TIMELINE ── */
+.timeline{background:#2A0808;border-top:1px solid rgba(201,168,76,0.3);border-bottom:1px solid rgba(201,168,76,0.3);padding:2.5rem 2rem;}
+.timeline-title{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:#C9A84C;text-align:center;margin-bottom:1.8rem;}
+.timeline-items{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.timeline-item{display:grid;grid-template-columns:130px 1fr;align-items:center;padding:0.75rem 0;border-bottom:1px solid rgba(201,168,76,0.12);}
+.timeline-item:last-child{border-bottom:none;}
+.timeline-time{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;color:#C9A84C;text-transform:uppercase;}
+.timeline-event{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#F5EDD8;}
+@media(max-width:680px){
+  .timeline-item{grid-template-columns:110px 1fr;gap:0.5rem;}
+  .timeline-time{font-size:9px;}
+  .timeline-event{font-size:1rem;}
 }
 </style>
 </head>
@@ -121,10 +135,35 @@ footer p{font-size:clamp(0.7rem,1.8vw,0.8rem);letter-spacing:0.15em;color:rgba(2
 <!-- ── INFO BAND ── -->
 <div class="info-band">
   <div class="info-item"><div class="info-item-label">Date</div><div class="info-item-value">August 1, 2026</div></div>
-  <div class="info-item"><div class="info-item-label">Pooja &amp; Lunch</div><div class="info-item-value">12:30 PM</div></div>
-  <div class="info-item"><div class="info-item-label">Performance</div><div class="info-item-value">2:00 PM</div></div>
   <div class="info-item"><div class="info-item-label">Venue</div><div class="info-item-value">Sri Guruvaayoorappan Temple, Morganville NJ</div></div>
   <div class="info-item"><div class="info-item-label">RSVP Deadline</div><div class="info-item-value">July 15, 2026</div></div>
+</div>
+
+<!-- ── TIMELINE ── -->
+<div class="timeline">
+  <div class="timeline-title">Schedule of the Day</div>
+  <div class="timeline-items">
+    <div class="timeline-item">
+      <div class="timeline-time">12:00 – 1:45 pm</div>
+      <div class="timeline-event">Welcome &amp; Lunch</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">1:45 – 2:00 pm</div>
+      <div class="timeline-event">Pooja</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">2:00 – 4:30 pm</div>
+      <div class="timeline-event">Arangetram</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">4:30 – 4:45 pm</div>
+      <div class="timeline-event">Felicitations</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">4:45 – 5:30 pm</div>
+      <div class="timeline-event">Tea &amp; Snacks</div>
+    </div>
+  </div>
 </div>
 
 <!-- ── FORM ── -->

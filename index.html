@@ -27,6 +27,21 @@ nav{
 .nav-links{display:flex;}
 .nav-links a{color:rgba(232,208,138,0.7);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;padding:0 1rem;height:58px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s;}
 .nav-links a:hover,.nav-links a.active{color:#E8D08A;border-bottom-color:#C9A84C;}
+.nav-toggle{display:none;}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;margin-left:auto;}
+.nav-burger span{display:block;height:2px;width:24px;background:#E8D08A;transition:transform 0.3s,opacity 0.3s;}
+.nav-toggle:checked ~ .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle:checked ~ .nav-burger span:nth-child(2){opacity:0;}
+.nav-toggle:checked ~ .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-burger{display:flex;}
+  .nav-logo{font-size:24px;}
+  .nav-links{position:fixed;top:58px;left:0;right:0;flex-direction:column;background:rgba(26,10,10,0.98);border-bottom:1px solid rgba(201,168,76,0.3);max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+  .nav-toggle:checked ~ .nav-links{max-height:85vh;}
+  .nav-links a{height:auto;width:100%;padding:0.95rem 1.5rem;font-size:12px;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .nav-links a.active{color:#E8D08A;border-bottom-color:rgba(201,168,76,0.12);}
+}
 
 /* ── HERO ── */
 .hero{
@@ -147,7 +162,7 @@ nav{
 .program-grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem;}
 .program-item{background:#1A0505;display:grid;grid-template-columns:56px 1fr;transition:background 0.2s;}
 .program-item:hover{background:#3B0A0A;}
-.program-num{background:var(--crimson-dark);color:var(--gold-light);font-family:'Cinzel',serif;font-size:21px;display:flex;align-items:center;justify-content:center;}
+.program-num{background:var(--crimson-dark);color:var(--gold-light);font-family:'Cinzel',serif;font-size:clamp(0.88rem,2vw,0.98rem);display:flex;align-items:center;justify-content:center;}
 .program-body{padding:1.2rem 1.4rem;}
 .program-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold-light);margin-bottom:0.2rem;}
 .program-desc{font-size:0.95rem;color:#D4B896;line-height:1.65;}
@@ -203,18 +218,25 @@ nav{
 /* ── FOOTER ── */
 footer{background:var(--dark);text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);}
 .footer-ornament{color:var(--gold);font-size:1rem;opacity:0.35;margin-bottom:0.6rem;}
-footer p{font-size:11px;letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-transform:uppercase;}
+footer p{font-size:clamp(0.7rem,1.8vw,0.8rem);letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-transform:uppercase;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 @media(max-width:780px){
   .hero{grid-template-columns:1fr;min-height:auto;}
   .hero-left{padding:4rem 1.5rem 2rem;order:2;}
-  .hero-right{height:60vw;order:1;}
-  .hero-right img{mask-image:linear-gradient(to bottom,black 70%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,black 70%,transparent 100%);}
+  .hero-right{height:100vw;order:1;}
+  .hero-right img{object-fit:contain;object-position:center top;mask-image:none;-webkit-mask-image:none;}
   .info-band{gap:1.5rem;}
   nav{padding:0 1rem;}
   .nav-links a{padding:0 0.5rem;font-size:10px;}
+}
+
+@media(max-width:680px){
+  section,.section,.hero-section{padding-top:2.5rem!important;padding-bottom:2.5rem!important;}
+  .page-header,.hero{min-height:clamp(340px,55vh,500px)!important;}
+  h1{font-size:clamp(1.8rem,7vw,2.8rem)!important;}
+  h2{font-size:clamp(1.4rem,5.5vw,2.2rem)!important;}
 }
 </style>
 </head>
@@ -222,6 +244,8 @@ footer p{font-size:11px;letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-
 
 <nav>
   <a href="index.html" class="nav-logo">Diya's Arangetram</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
   <div class="nav-links">
     <a href="index.html" class="active">Home</a>
     <a href="diya.html">Diya</a>
@@ -257,7 +281,7 @@ whose adornment is the moon and stars — to that pure Shiva, we bow.</div>
     </div>
 
     <div class="hero-details">
-      <div class="hero-date">Saturday, August 1, 2026 &nbsp;·&nbsp; 12:30 PM</div>
+      <div class="hero-date">Saturday, August 1, 2026 &nbsp;·&nbsp; 12:00 PM</div>
       <div class="hero-venue">Sri Guruvaayoorappan Temple<br>31 Wooleytown Rd, Morganville, NJ</div>
     </div>
 
@@ -272,7 +296,7 @@ whose adornment is the moon and stars — to that pure Shiva, we bow.</div>
 <!-- ── INFO BAND ── -->
 <div class="info-band">
   <div class="info-item"><div class="info-item-label">Date</div><div class="info-item-value">August 1, 2026</div></div>
-  <div class="info-item"><div class="info-item-label">Time</div><div class="info-item-value">Pooja &amp; Lunch 12:30 PM<br><span style="font-size:0.85em;color:#D4B896;">Performance 2:00 PM</span></div></div>
+  <div class="info-item"><div class="info-item-label">Time</div><div class="info-item-value">Welcome &amp; Lunch 12:00 PM<br><span style="font-size:0.85em;color:#D4B896;">Arangetram 2:00 PM</span></div></div>
   <div class="info-item"><div class="info-item-label">Venue</div><div class="info-item-value">Sri Guruvaayoorappan Temple</div></div>
   <div class="info-item"><div class="info-item-label">Address</div><div class="info-item-value">31 Wooleytown Rd, Morganville, NJ</div></div>
   <div class="info-item"><div class="info-item-label">RSVP By</div><div class="info-item-value">July 15, 2026</div></div>

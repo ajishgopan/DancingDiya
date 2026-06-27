@@ -24,6 +24,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.9
 @media(max-width:900px){
   nav{padding:0 1.25rem;}
   .nav-burger{display:flex;}
+  .nav-logo{font-size:24px;}
   .nav-links{position:fixed;top:58px;left:0;right:0;flex-direction:column;background:rgba(26,10,10,0.98);border-bottom:1px solid rgba(201,168,76,0.3);max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
   .nav-toggle:checked ~ .nav-links{max-height:85vh;}
   .nav-links a{height:auto;width:100%;padding:0.95rem 1.5rem;font-size:12px;border-bottom:1px solid rgba(201,168,76,0.12);}
@@ -66,8 +67,8 @@ footer p{font-size:11px;letter-spacing:0.15em;color:rgba(232,208,138,0.25);text-
 @media(max-width:780px){
   .hero{grid-template-columns:1fr;min-height:auto;}
   .hero-left{padding:3rem 1.5rem 2rem;order:2;}
-  .hero-right{height:70vw;order:1;}
-  .hero-right img{mask-image:linear-gradient(to bottom,black 70%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,black 70%,transparent 100%);}
+  .hero-right{height:100vw;order:1;}
+  .hero-right img{object-fit:contain;object-position:center top;mask-image:none;-webkit-mask-image:none;}
   .credits-grid{grid-template-columns:1fr;}
   .credit-cell.full{grid-column:1;}
   nav{padding:0 1rem;}
