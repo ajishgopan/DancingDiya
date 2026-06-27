@@ -10,7 +10,7 @@
 body{font-family:'Raleway',sans-serif;background:#1A0505;color:#F5EDD8;font-weight:300;}
 a{text-decoration:none;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,10,0.97);border-bottom:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:58px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(26,10,10,0.97);border-bottom:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:58px;}
 .nav-logo{text-decoration:none;font-family:'Pinyon Script',cursive;font-size:28px;letter-spacing:0.04em;color:#E8D08A;text-transform:none;}
 .nav-links{display:flex;}
 .nav-links a{color:rgba(232,208,138,0.7);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;padding:0 1rem;height:58px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.2s;}
@@ -89,12 +89,12 @@ footer p{font-size:clamp(0.88rem,2vw,0.98rem);letter-spacing:0.15em;color:rgba(2
   .prog-row[data-row="1"] .prog-photo img,.prog-row[data-row="2"] .prog-photo img,.prog-row[data-row="3"] .prog-photo img,.prog-row[data-row="4"] .prog-photo img,.prog-row[data-row="5"] .prog-photo img,.prog-row[data-row="6"] .prog-photo img{object-fit:contain;object-position:center top;height:auto;}
   .prog-body{border-left:none!important;border-right:none!important;border-top:1px solid rgba(201,168,76,0.3);}
   nav{padding:0 1rem;}
-  .nav-links a{padding:0 0.5rem;font-size:9px;}
 }
 
 @media(max-width:680px){
   section,.section,.hero-section{padding-top:2.5rem!important;padding-bottom:2.5rem!important;}
   .page-header,.hero{min-height:clamp(340px,55vh,500px)!important;}
+  .page-header{min-height:0!important;padding:4rem 1.5rem 2rem!important;}
   h1{font-size:clamp(1.8rem,7vw,2.8rem)!important;}
   h2{font-size:clamp(1.4rem,5.5vw,2.2rem)!important;}
 }
